@@ -1,0 +1,277 @@
+/* Shared custom styles */
+
+/* Footer block extracted from inline styles */
+.linkTitle {
+  font-size: 18px;
+  font-weight: 300;
+  color: rgb(167, 169, 172);
+}
+
+.linkBody {
+  color: rgb(167, 169, 172);
+}
+
+.helpdeskfooter {
+  padding-left: 2%;
+  color: rgb(167, 169, 172);
+}
+
+.helpdesktitle {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.helpdeskContact {
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 10px;
+  padding-left: 5px;
+}
+
+.footerLink {
+  font-size: 14px;
+  color: rgb(167, 169, 172);
+}
+
+.footerLink:hover {
+  color: rgb(167, 169, 172);
+}
+
+.gridCell {
+  float: left;
+  margin-left: 5%;
+}
+
+.footerlogo > img {
+  height: auto;
+  width: 90px;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .gridCell {
+    margin-left: 4%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .gridCell {
+    margin-left: 1%;
+  }
+}
+
+/* mobile navigation toggle and sliding panel */
+
+/* mobile search icon – show only on narrow screens */
+#mobileSearchIcon {
+  display: none;
+  font-size: 25px;
+  color: steelblue;
+}
+@media (max-width:768px) {
+  #mobileSearchIcon {
+    display: block !important; /* override sf-hidden */
+  }
+}
+
+
+/* hide the toggle by default (desktop) and only show in small viewports */
+#stMobileNavToggle {
+  display: none !important;
+  position: absolute !important; /* always absolute so we can control placement */
+  top: 55px !important;          /* align with banner height on desktop */
+  right: 10px !important;        /* keep it near the right edge when visible */
+  z-index: 2000;                 /* sit above other elements */
+}
+@media (max-width:768px) {
+  #stMobileNavToggle {
+    display: flex !important;
+    position: absolute !important;
+    top: 0 !important;           /* pin to the very top on phones */
+    left: 0 !important;          /* stick to left edge */
+    margin: 0 !important;        /* override any centering margin */
+    justify-content: flex-start; /* align icon at left inside toggle */
+    padding-left: 10px;          /* give a little breathing room from edge */
+  }
+  #stMobileNavToggle svg {
+    margin: 0;                   /* no automatic centering */
+  }
+
+/* make banner logo clickable as menu toggle */
+.stBannerIcon {
+  cursor: pointer;
+}
+}
+
+@media (max-width: 768px) {
+  body.stNavigationShow #stBootstrapNav {
+      left: 0 !important;
+  }
+  body.stNavigationShow .stMobileNavBackground {
+      background: rgba(0,0,0,0.4);
+  }
+  .stMobileNavToggleNotch {
+      width: 24px;
+      height: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  }
+  .stMobileNavToggleNotch div {
+      background: #fff;
+      height: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+  }
+  body.stNavigationShow .stMobileNavToggleNotch div:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+      background-color: #333; /* Darker color when open on white bg */
+  }
+  body.stNavigationShow .stMobileNavToggleNotch div:nth-child(2) {
+      opacity: 0;
+  }
+  body.stNavigationShow .stMobileNavToggleNotch div:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+      background-color: #333;
+  }
+}
+
+/* Mobile Menu Overlay Styles */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 9999;
+    transform: translateX(-100%); /* Hidden by default */
+    transition: transform 0.3s ease-in-out;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+/* Show menu when body has stNavigationShow class */
+body.stNavigationShow .mobile-menu-overlay {
+    transform: translateX(0);
+}
+
+.mobile-menu-overlay .close-menu {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    color: #1B7AB7;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.mobile-menu-overlay .overlay-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* To space logo and search/close */
+}
+
+.mobile-menu-overlay .overlay-logo {
+    height: 50px;
+    width: auto;
+}
+
+.mobile-menu-overlay .overlay-search {
+    margin-right: 40px; /* Space for close button */
+}
+
+.mobile-menu-overlay .overlay-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.mobile-menu-overlay .overlay-list li {
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.mobile-menu-overlay .overlay-list li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.mobile-menu-overlay .overlay-list li a:hover {
+    background-color: #f0f8ff;
+    color: #1B7AB7;
+}
+
+.mobile-menu-overlay .overlay-list li a i {
+    margin-right: 15px;
+    width: 25px;
+    text-align: center;
+    color: #1B7AB7;
+    font-size: 18px;
+}
+
+.mobile-menu-overlay .overlay-list li.active-item a {
+    color: #1B7AB7;
+    font-weight: bold;
+    background-color: #f9f9f9;
+    border-left: 4px solid #1B7AB7;
+}
+
+/* Auth buttons in menu */
+.mobile-menu-overlay .overlay-list li a.auth-btn {
+    justify-content: center;
+    background-color: #1B7AB7;
+    color: white;
+    margin: 10px 20px;
+    border-radius: 4px;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.mobile-menu-overlay .overlay-list li a.auth-btn:hover {
+    background-color: #156a9e;
+}
+
+/* 1. Hide the menu by default for desktop */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Hidden off-screen to the left */
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    background: #ffffff;
+    z-index: 1000;
+    transition: left 0.3s ease; /* Smooth slide-in effect */
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    display: none; /* Hide conflicting side-menu */
+}
+
+/* 2. Class to show the menu (Triggered by JS) */
+.side-menu.active {
+    left: 0;
+}
+
+/* 3. Overlay for the rest of the screen */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+.menu-overlay.show {
+    display: block;
+}
